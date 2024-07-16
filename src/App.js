@@ -22,12 +22,21 @@ const App = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4">
-            <h1 className="text-5xl font-bold text-white mb-6">Weather App</h1>
-            <SearchBar onSearch={handleSearch} />
-            {loading && <p className="text-xl text-white">Loading...</p>}
-            {error && <Error message={error} />}
-            {weather && <WeatherDisplay weather={weather} />}
+        <div className="flex flex-col items-center justify-between min-h-screen p-4 bg-gray-100 relative z-0">
+            <header className="w-full py-6 mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-2xl rounded-lg animate-gradientShift">
+                <h1 className="text-6xl font-bold text-center">Weather App</h1>
+            </header>
+            <main className="flex flex-col items-center flex-grow w-full">
+                <SearchBar onSearch={handleSearch} />
+                {loading && (
+                    <div className="spinner"></div>
+                )}
+                {error && <Error message={error} />}
+                {weather && <WeatherDisplay weather={weather} />}
+            </main>
+            <footer className="w-full py-4 mt-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-center rounded-lg shadow-2xl animate-gradientShift">
+                <p className="text-xl text-gray-200">Weather App © 2024</p>
+            </footer>
         </div>
     );
 };
