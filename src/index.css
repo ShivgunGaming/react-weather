@@ -2,7 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~weather-icons/css/weather-icons.css';
+
 body {
-  @apply bg-cover bg-center min-h-screen;
+  @apply bg-cover bg-center min-h-screen relative;
   background-image: url('https://source.unsplash.com/random/1600x900?weather'), linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-repeat: no-repeat;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.spinner {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.spinner:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: spin 1.2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.border-gradient-to-r {
+  border-image: linear-gradient(to right, #4f46e5, #6d28d9, #d946ef) 1;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  animation: gradientShift 10s ease infinite;
 }
